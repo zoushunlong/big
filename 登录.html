@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./assets/css/login.css" />
 </head>
 
+
 <body>
     <!-- 头部logo区 -->
     <div class="layui-main">
@@ -19,15 +20,73 @@
     <!-- 登录注册区域 -->
     <div class="denglukuang">
         <div class="toubox"></div>
-        <!-- 登录的div -->
-        <div class="dengbox"><a href="javescript:;" id="deng">去登录</a></div>
         <!-- 注册的div -->
-        <div class="zhubox"><a href="javescript:;" id="zhu">去注册账号</a></div>
-    </div>
 
-    <!-- 导入jquery -->
-    <script src="assets/lib/jquery.js"></script>
+        <div class="dengbox guan">
+            <!--layui-form 表单域居中  -->
+            <form class="layui-form" id="form1">
+                <!-- 用户名 -->
+                <!-- layui-form-item一个盒子的默认模式 -->
+                <div class="layui-form-item">
+                    <!-- layui-icon设置字体图标 -->
+                    <i class="layui-icon layui-icon-username"></i>
+                    <!--lay-verify设置表示对值进行效验  layui-input 表单居中-->
+                    <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" id="hu">
+
+                </div>
+                <!-- 密码 -->
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-password"></i>
+                    <input type="password" name="password" required lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class=" layui-input  " id="mi">
+
+                </div>
+                <!-- 密码确认框 -->
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-password"></i>
+                    <input type="password" name="repassword" required lay-verify="required|pass|repass" placeholder="再次确认密码" autocomplete="off" class=" layui-input  ">
+
+                </div>
+                <div class="layui-form-item">
+                    <!-- 提交按钮和普通按钮的区别 差一个lay-submit layui-btn-fluid平铺 layui-btn表示按钮 后面可以加不同的样式-->
+                    <button class="layui-btn layui-btn-fluid layui-btn layui-btn-normal" lay-submit lay-filter="formDemo" id="dian">注册</button>
+                </div>
+                <div class="layui-form-item denglu"><a href="javascript:;" id="deng">去登录</a></div>
+            </form>
+
+        </div>
+        <!-- 登录的div -->
+        <div class="zhubox">
+            <form class="layui-form" id="form2">
+                <!-- 用户名 -->
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-username"></i>
+
+                    <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" id="hu">
+
+                </div>
+                <!-- 密码 -->
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-password"></i>
+                    <input type="password" name="password" required lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class=" layui-input  " id="mi">
+
+                </div>
+                <div class="layui-form-item">
+                    <!-- 提交按钮和普通按钮的区别 差一个lay-submit layui-btn-fluid平铺-->
+                    <button class="layui-btn layui-btn-fluid layui-btn layui-btn-normal" lay-submit lay-filter="formDemo" id="lu">登录</button>
+                </div>
+                <div class="layui-form-item zhuce "><a href="javascript:;" id="zhu">去注册账号</a></div>
+            </form>
+
+
+        </div>
+    </div>
+    <!-- 导入layui的js -->
+    <script src="assets/lib/layui/layui.all.js"></script>
+    <script src="../../ajax/封装一个Ajax函数.js"></script>
+
+    <!-- 用原生书写 -->
     <script src="assets/js/denglu.js"></script>
+
 </body>
 
 </html>
