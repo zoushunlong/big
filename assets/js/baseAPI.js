@@ -12,12 +12,12 @@ $.ajaxPrefilter(function(options) {
     }
     // 权局统一调用complete
     options.complete = function(res) {
-        console.log('ok');
-        console.log(res);
+        // console.log('ok');
+        // console.log(res);
         //在complete回调函数中可以使用responseJSON拿到服务器响应回来的数据
         if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
             //强制清空token 强制跳转登录页
-            console.log(0);
+            // console.log(0);
             localStorage.removeItem('token');
             location.href = '登录.html';
         }

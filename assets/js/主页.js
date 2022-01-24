@@ -1,5 +1,5 @@
 window.onload = function() {
-    get()
+    get();
     let btn = document.getElementById("bth");
     btn.onclick = function() {
         // 提示客户是否退出
@@ -25,7 +25,7 @@ window.onload = function() {
                     return layui.layer.msg('获取用户失败')
                 } else {
                     //调用渲染头像的函数
-                    console.log(res.data);
+                    // console.log(res.data);
                     reader(res.data);
                     // 在ajax以后都会执行complate函数
 
@@ -38,33 +38,34 @@ window.onload = function() {
     function reader(user) {
         //获取用户的名称
         let name = user.nickname || user.username;
-        console.log(name);
+        // console.log(name);
         let huan = document.getElementById('huan')
         huan.innerHTML = '欢迎&nbsp;&nbsp;' + name;
         let tu = document.getElementsByClassName('layui-nav-img');
-        console.log(tu[0].src);
+        // console.log(tu[0].src);
         let wen = document.getElementsByClassName('tou');
-        console.log(wen);
+        // console.log(wen);
         // 按需渲染用户头像
         if (user.user_pic != null) {
             //图片头像
             for (let i = 0; i < tu.length; i++) {
                 tu[i].src = user.user_pic;
+                tu[i].className = 'layui-nav-img kai'
             }
             for (let i = 0; i < wen.length; i++) {
-                wen[i].style.display = 'none';
+                wen[i].className = 'tou guan';
             }
 
         } else {
             //文本头像
             let tu = document.getElementsByClassName('layui-nav-img');
             let wen = document.getElementsByClassName('tou');
-            console.log(tu[0]);
+            // console.log(tu[0]);
             for (let i = 0; i < tu.length; i++) {
                 tu[i].className = 'layui-nav-img guan';
             }
             let first = name[0].toUpperCase();
-            console.log(first);
+            // console.log(first);
             for (let i = 0; i < wen.length; i++) {
                 wen[i].innerHTML = first;
                 wen[i].className = 'tou kai';
