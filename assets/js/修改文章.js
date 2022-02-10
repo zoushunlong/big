@@ -120,39 +120,58 @@ window.onload = function() {
     });
     //通过代理的方式为删除动态生成的按钮点击处理函数 
     $('tbody').on('click', '#shan', function() {
-        // 获取删除按钮的个数  这里要用类名 因为井号名是单独的 长度永远为一
-        let ans = $('.shan').length;
-        console.log(ans);
-        // 获取到文章的 id
-        var id = $(this).attr('data-id')
-            // 询问用户是否要删除数据
-        layer.confirm('确认删除?', { icon: 3, title: '提示' }, function() {
-            $.ajax({
-                method: 'GET',
-                url: '/my/article/delete/' + id,
-                success: function(res) {
-                    if (res.status !== 0) {
-                        return layer.msg('删除文章失败！')
-                    } else {
-                        layer.msg('删除文章成功！')
-                        if (ans == 1) {
-                            //删除后页面就没有任何数据了
-                            //页码值最小为1 当为1时就不做减1处理 
-                            q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1;
+            // 获取删除按钮的个数  这里要用类名 因为井号名是单独的 长度永远为一
+            let ans = $('.shan').length;
+            console.log(ans);
+            // 获取到文章的 id
+            var id = $(this).attr('data-id')
+                // 询问用户是否要删除数据
+            layer.confirm('确认删除?', { icon: 3, title: '提示' }, function() {
+                $.ajax({
+                    method: 'GET',
+                    url: '/my/article/delete/' + id,
+                    success: function(res) {
+                        if (res.status !== 0) {
+                            return layer.msg('删除文章失败！')
+                        } else {
+                            layer.msg('删除文章成功！')
+                            if (ans == 1) {
+                                //删除后页面就没有任何数据了
+                                //页码值最小为1 当为1时就不做减1处理 
+                                q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1;
+                            }
+                            get();
+                            // 当数据删除后 要判断当前页面中是否还有剩余数据
+                            // 如果没有数据 就让页码值减1  再调用get方法
                         }
-                        get();
-                        // 当数据删除后 要判断当前页面中是否还有剩余数据
-                        // 如果没有数据 就让页码值减1  再调用get方法
-                    }
 
-                }
-            });
-            //关闭当前索引的弹出层
-            layer.close(id)
+                    }
+                });
+                //关闭当前索引的弹出层
+                layer.close(id)
+            })
         })
-    })
-    $('tbody').on('click', function() {
-        location.href = '../文章内容/发布文章.html';
-    })
+        // $('tbody').on('click', function() {
+        //     location.href = '../文章内容/发布文章.html';
+        //     let id = $(this).attr('data-id');
+        //     $.ajax({
+        //         method: 'GET',
+        //         // 编辑按钮做不了
+        //         url: '/my/article/' + id,
+        //         success: function(res) {
+        //             if (res.status != 0) {
+        //                 return layer.msg('获取用户信息失败！')
+        //             } else {
+        //                 //调用form.val()快速给表单赋值
+        //                 console.log(res.data);
+        //                 form.val('formin', res.data)
+        //                 console.log(1);
+        //             }
+
+    //         }
+    //     })
+    // })
+
+
 
 }

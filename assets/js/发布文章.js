@@ -5,7 +5,7 @@ window.onload = function() {
     get()
         // 初始化富文本编辑器
     initEditor()
-    init()
+
 
     function get() {
         $.ajax({
@@ -102,23 +102,23 @@ window.onload = function() {
             }
         })
     }
-    init()
-        // 初始化用户的信息
-    function init() {
-        $.ajax({
-            method: 'GET',
-            // 编辑按钮做不了
-            url: '/my/article/add',
-            success: function(res) {
-                if (res.status != 0) {
-                    return layer.msg('获取用户信息失败！')
-                } else {
-                    //调用form.val()快速给表单赋值
-                    console.log(res.data);
-                    form.val('formin', res.data)
-                }
+    // init()
+    //     // 初始化用户的信息
+    // function init() {
+    //     $.ajax({
+    //         method: 'GET',
+    //         // 编辑按钮做不了
+    //         url: '/my/article/:id',
+    //         success: function(res) {
+    //             if (res.status != 0) {
+    //                 return layer.msg('获取用户信息失败！')
+    //             } else {
+    //                 //调用form.val()快速给表单赋值
+    //                 console.log(res.data);
+    //                 form.val('formin', res.data)
+    //             }
 
-            }
-        })
-    };
+    //         }
+    //     })
+    // };
 }
